@@ -1133,6 +1133,9 @@ Next, add some locations to your thread:
     Added 1 file in 534.774123ms
     ```
 
+!!! info
+    On Windows, exclude the wrapping `'` on JSON objects when posting data via cmd
+
 Your peer will validate the input against the thread's schema. The input will _also_ be validated against its embedded JSON schema (schemas within schemas!). Try adding a location with latitude great than 90, which is invalid:
 
 ```tab="cmd"
@@ -1246,6 +1249,9 @@ Now that you have two peers running, invite the new account to your "My runs" th
     added P7X3gZus5H15tWCxk4oP6EVsgAM9vwUfCyepAKw49QuRyPYs
     ok
     ```
+
+!!! Note
+    If the peer wasn't found, you may need to wait for a few seconds for the buddy textile instance to establish a peer connect to your primary textile instance.
 
 This new account is not an existing contact. So, your peer will ask the network for its contact info. You can confirm that, yes, you'd like to add this account to your local contacts and send it an invite to your thread.
 
@@ -2429,7 +2435,7 @@ In order for clients to register with your cafe, they'll need one of its _client
 Create a token as follows:
 
 ```tab="cmd"
-textile tokens create
+textile tokens create --api="http://127.0.0.1:41600"
 ```
 
 ???+ success
@@ -2442,7 +2448,7 @@ textile tokens create
 View the cafe's client tokens with the `ls` command:
 
 ```tab="cmd"
-textile tokens ls
+textile tokens ls --api="http://127.0.0.1:41600"
 ```
 
 ???+ success
